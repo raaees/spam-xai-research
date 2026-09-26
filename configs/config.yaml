@@ -1,0 +1,44 @@
+# Configuration for the spam-XAI research pipeline
+
+project:
+  name: "spam_xai"
+  python_version: "3.12"
+  seed: 42
+
+paths:
+  root: "."
+  raw_dir: "data/raw/cresci2017"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  outputs_dir: "outputs"
+
+logging:
+  level: "INFO"
+  output_file: "outputs/validation.log"
+
+dataset:
+  name: "cresci-2017"
+  label_mapping:
+    genuine_accounts: 0
+    traditional_spambots_1: 1
+    traditional_spambots_2: 1
+    traditional_spambots_3: 1
+    traditional_spambots_4: 1
+    social_spambots_1: 1
+    social_spambots_2: 1
+    social_spambots_3: 1
+    fake_followers: "exclude"
+
+splitting:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  stratify: true
+  random_seed: 42
+
+validation:
+  require_account_id: true
+  require_text_field: false
+  require_tweet_id: false
+  require_timestamp: false
+  require_label: true
